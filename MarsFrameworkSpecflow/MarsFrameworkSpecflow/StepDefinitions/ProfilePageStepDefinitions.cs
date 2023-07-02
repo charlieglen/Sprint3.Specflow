@@ -1,8 +1,5 @@
 using MarsFrameworkSpecflow.Pages;
 using NUnit.Framework;
-using RazorEngine;
-using System;
-using TechTalk.SpecFlow;
 using MarsFrameworkSpecflow.Global;
 using System.Reflection;
 using AventStack.ExtentReports;

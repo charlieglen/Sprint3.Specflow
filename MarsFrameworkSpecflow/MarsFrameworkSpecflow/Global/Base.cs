@@ -2,12 +2,9 @@
 using AventStack.ExtentReports.Reporter;
 using MarsFrameworkSpecflow.Config;
 using MarsFrameworkSpecflow.Pages;
-using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using MarsFrameworkSpecflow.Global;
 using static MarsFramework.Global.GlobalDefinitions;
 using OpenQA.Selenium;
-using System.Security.Cryptography.X509Certificates;
 
 namespace MarsFrameworkSpecflow.Global
 {
