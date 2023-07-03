@@ -3,7 +3,7 @@ using AventStack.ExtentReports.Reporter;
 using MarsFrameworkSpecflow.Config;
 using MarsFrameworkSpecflow.Pages;
 using OpenQA.Selenium.Chrome;
-using static MarsFramework.Global.GlobalDefinitions;
+using static MarsFrameworkSpecflow.Global.GlobalDefinitions;
 using OpenQA.Selenium;
 
 namespace MarsFrameworkSpecflow.Global

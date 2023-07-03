@@ -1,6 +1,6 @@
 ﻿using MarsFrameworkSpecflow.Global;
 using OpenQA.Selenium;
-using static MarsFramework.Global.GlobalDefinitions;
+using static MarsFrameworkSpecflow.Global.GlobalDefinitions;
 
 namespace MarsFrameworkSpecflow.Pages
 {
