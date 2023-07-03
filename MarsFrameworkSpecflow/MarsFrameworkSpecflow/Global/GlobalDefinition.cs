@@ -6,7 +6,7 @@ using SeleniumExtras.WaitHelpers;
 using System.Data;
 using System.Text;
 
-namespace MarsFramework.Global
+namespace MarsFrameworkSpecflow.Global
 {
 
     class GlobalDefinitions : Base
