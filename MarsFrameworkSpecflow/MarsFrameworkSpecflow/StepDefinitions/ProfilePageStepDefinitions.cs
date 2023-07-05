@@ -1,7 +1,8 @@
 using MarsFrameworkSpecflow.Pages;
 using NUnit.Framework;
-using MarsFrameworkSpecflow.Global;
+//using static MarsFrameworkSpecflow.Global.Base;
 using System.Reflection;
+using MarsFrameworkSpecflow.Global;
 using AventStack.ExtentReports;
 
 namespace MarsFrameworkSpecflow.StepDefinitions
@@ -36,8 +37,6 @@ namespace MarsFrameworkSpecflow.StepDefinitions
 
             Assert.That(alertWindow == expectedMessage, "Actual and Expected result did not match");
             test.Log(Status.Pass, "Passed, action successfull.");
-            //Assert.That(ex.Message, )
-            
 
         }
     }
