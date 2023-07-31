@@ -1,11 +1,6 @@
 ﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 using MarsFrameworkSpecflow.Config;
-using MarsFrameworkSpecflow.Pages;
-using OpenQA.Selenium.Chrome;
-using static MarsFrameworkSpecflow.Global.GlobalDefinitions;
 using OpenQA.Selenium;
-using NUnit.Framework;
 
 namespace MarsFrameworkSpecflow.Global
 {
@@ -22,8 +17,9 @@ namespace MarsFrameworkSpecflow.Global
         public static ExtentTest test;
         public static ExtentReports extent = new ExtentReports();
 
+        //public static IWebDriver driver;
         public static IWebDriver driver;
-      
+
     }
 
-}
+} 
