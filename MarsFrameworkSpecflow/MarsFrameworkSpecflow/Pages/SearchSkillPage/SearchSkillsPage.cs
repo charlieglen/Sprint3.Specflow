@@ -48,7 +48,6 @@ namespace MarsFrameworkSpecflow.Pages
             Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/div[1]/div[1]/input", 5);
             searchSkillTextArea.SendKeys(ExcelLib.ReadData(testRow, "SearchSkill"));
             searchIcon.Click();
-
         }
 
         public void SearchUserFromResult()
@@ -74,13 +73,11 @@ namespace MarsFrameworkSpecflow.Pages
         public void OpenSellerDetails()
         {
             Wait.WaitToBeClickable("XPath", "//*[@class=\"ui stackable three cards\"]/div[1]/a[1]/img[1]", 5);
-            //Thread.Sleep(1000);
             openSellerDetails.Click();
         }
+
         public bool GetSkillTitleAndDescription()
         {
-            //Wait.WaitToBeVisible("XPath", "//*[@class=\"ui button\" and contains(text(), \"ShowAll\")]", 5);
-
             if (skillTitle.Text.Contains(ExcelLib.ReadData(testRow, "SearchBySkill"), StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine(skillTitle.Text);
@@ -123,7 +120,6 @@ namespace MarsFrameworkSpecflow.Pages
             Console.WriteLine(string.Join(" | ", highestValue));
             IWebElement highestResult = driver.FindElement(By.XPath("//*[@class=\"right-floated\" and contains(text(), " + highestValue + ")]"));
             highestResult.Click();
-
         }
 
         public void ViewHighestMatchSubCategory()
@@ -197,7 +193,6 @@ namespace MarsFrameworkSpecflow.Pages
             Task.Delay(1000).Wait();
             Console.WriteLine(numberOfResultsLastPage.Count);
             return totalCount + numberOfResultsLastPage.Count;
-
         }
 
         public int GetExpectedNumberOfResults()

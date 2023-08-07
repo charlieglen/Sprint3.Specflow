@@ -1,28 +1,27 @@
 using AventStack.ExtentReports;
-using MarsFrameworkSpecflow.Pages;
 using NUnit.Framework;
 using System.Reflection;
 using MarsFrameworkSpecflow.Global;
+using MarsFrameworkSpecflow.Pages;
 
 namespace MarsFrameworkSpecflow.StepDefinitions
 {
     [Binding]
     public class ReceivedRequestStepDefinitions : Base
     {
-        ManageRequestsPage manageRequestsObj = new ManageRequestsPage();
-        private string senderURL;
+        ReceivedRequestPage receivedRequestsObj = new ReceivedRequestPage();
 
         //Background
         [Given(@"I navigate to Manage Requests Page then Received Request Page")]
         public void GivenINavigateToManageRequestsPageThenReceivedRequestPage()
         {
-            manageRequestsObj.ReceivedRequestsPage();
+            receivedRequestsObj.ReceivedRequestsPage();
         }
         //Accept Request
         [Given(@"I accept a new request")]
         public void GivenIAcceptANewRequest()
         {
-            manageRequestsObj.AcceptRequest();
+            receivedRequestsObj.AcceptRequest();
         }
 
         [Then(@"The new request should be accepted successfully")]
@@ -30,7 +29,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            string status = manageRequestsObj.GetStatus();
+            string status = receivedRequestsObj.GetStatus();
             Assert.That(status == "Accepted");
             test.Log(Status.Pass, "Passed, action successfull.");
         }
@@ -38,7 +37,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I decline a new request")]
         public void GivenIDeclineANewRequest()
         {
-            manageRequestsObj.DeclineRequest();
+            receivedRequestsObj.DeclineRequest();
         }
 
         [Then(@"The new request should be declined successfully")]
@@ -47,7 +46,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
             
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            string status = manageRequestsObj.GetStatus();
+            string status = receivedRequestsObj.GetStatus();
             Assert.That(status == "Declined");
             test.Log(Status.Pass, "Passed, action successfull.");
         }
@@ -55,9 +54,9 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I view the sender's profile")]
         public void GivenIViewTheSendersProfile()
         {
-            string senderURL = manageRequestsObj.GetSenderURL();
+            string senderURL = receivedRequestsObj.GetSenderURL();
             Console.WriteLine(senderURL);
-            manageRequestsObj.ViewSenderProfile();
+            receivedRequestsObj.ViewSenderProfile();
             ScenarioContext.Current["SenderURL"] = senderURL;
 
         }
@@ -66,7 +65,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         public void ThenTheSendersProfileShouldBeDisplayedSuccessfully()
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-            string currentURL = manageRequestsObj.GetPageURL();
+            string currentURL = receivedRequestsObj.GetPageURL();
             string senderURL = (string)ScenarioContext.Current["SenderURL"];
             Console.WriteLine("The current URL is: " + currentURL);
             Console.WriteLine("The sender's URL is: " + senderURL);
@@ -78,17 +77,16 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I view the requested service")]
         public void GivenIViewTheRequesteddService()
         {
-            string receivedRequestTitle = manageRequestsObj.RequestsTitle();
-            manageRequestsObj.ViewServiceDetail();
+            string receivedRequestTitle = receivedRequestsObj.RequestsTitle();
+            receivedRequestsObj.ViewServiceDetail();
             ScenarioContext.Current["ReceivedRequestTitle"] = receivedRequestTitle;
-            
         }
 
         [Then(@"The requested service should be displayed successfully")]
         public void ThenTheRequestedServiceShouldBeDisplayedSuccessfully()
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-            string ServicePageTitle = manageRequestsObj.ServiceDetailTitle();
+            string ServicePageTitle = receivedRequestsObj.ServiceDetailTitle();
             string receivedRequestTitle = (string)ScenarioContext.Current["ReceivedRequestTitle"];
             Assert.That(receivedRequestTitle == ServicePageTitle);
             Console.WriteLine("The expected tile is: " + receivedRequestTitle);
@@ -99,8 +97,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I sort the requests by categories")]
         public void GivenISortTheRequestsByCategories()
         {
-            List<String> actualCategory = manageRequestsObj.BeforeSortingCategory();
-            manageRequestsObj.SortByCategory();
+            List<String> actualCategory = receivedRequestsObj.BeforeSortingCategory();
+            receivedRequestsObj.SortByCategory();
             ScenarioContext.Current["ActualCategory"] = actualCategory;
 
         }
@@ -110,7 +108,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
 
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-            List<String> afterCategory = manageRequestsObj.AfterSortingCategory();
+            List<String> afterCategory = receivedRequestsObj.AfterSortingCategory();
             List<String> actualCategory = (List<String>)ScenarioContext.Current["ActualCategory"];
             Assert.AreNotEqual(actualCategory, afterCategory);
             test.Log(Status.Pass, "Passed, action successfull.");
@@ -119,8 +117,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I sort the requests by title")]
         public void GivenISortTheRequestsByTitle()
         {
-            List<String> actualTitle = manageRequestsObj.BeforeSortingTitle();
-            manageRequestsObj.SortByTitle();
+            List<String> actualTitle = receivedRequestsObj.BeforeSortingTitle();
+            receivedRequestsObj.SortByTitle();
             ScenarioContext.Current["ActualTitle"] = actualTitle;
 
         }
@@ -130,7 +128,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            List<String> afterTitle = manageRequestsObj.AfterSortingTitle();
+            List<String> afterTitle = receivedRequestsObj.AfterSortingTitle();
             List<String> actualTitle = (List<String>)ScenarioContext.Current["ActualTitle"];
             Assert.AreNotEqual(actualTitle, afterTitle);
             test.Log(Status.Pass, "Passed, action successfull.");
@@ -139,8 +137,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I sort the requests by message")]
         public void GivenISortTheRequestsByMessage()
         {
-            List<String> actualMessage = manageRequestsObj.BeforeSortingMessage();
-            manageRequestsObj.SortByMessage();
+            List<String> actualMessage = receivedRequestsObj.BeforeSortingMessage();
+            receivedRequestsObj.SortByMessage();
             ScenarioContext.Current["ActualMessage"] = actualMessage;
         }    
 
@@ -149,7 +147,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             List<String> actualMessage = (List<String>)ScenarioContext.Current["ActualMessage"];
-            List<String> afterMessage = manageRequestsObj.AfterSortingMessage();
+            List<String> afterMessage = receivedRequestsObj.AfterSortingMessage();
             Assert.AreNotEqual(actualMessage, afterMessage);
             test.Log(Status.Pass, "Passed, action successfull.");
 
@@ -158,8 +156,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I sort the requests by sender")]
         public void GivenISortTheRequestsBySender()
         {
-            List<String> actualSender = manageRequestsObj.BeforeSortingSender();
-            manageRequestsObj.SortBySender();
+            List<String> actualSender = receivedRequestsObj.BeforeSortingSender();
+            receivedRequestsObj.SortBySender();
             ScenarioContext.Current["ActualSender"] = actualSender;
 
         }
@@ -169,7 +167,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             List<String> actualSender = (List<String>)ScenarioContext.Current["ActualSender"];
-            List<String> afterSender = manageRequestsObj.AfterSortingSender();
+            List<String> afterSender = receivedRequestsObj.AfterSortingSender();
             Assert.AreNotEqual(actualSender, afterSender);
             test.Log(Status.Pass, "Passed, action successfull.");
 
@@ -179,8 +177,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         public void GivenISortTheRequestsByStatus()
         {
            
-            List<String> actualStatus = manageRequestsObj.BeforeSortingStatus();
-            manageRequestsObj.SortByStatus();
+            List<String> actualStatus = receivedRequestsObj.BeforeSortingStatus();
+            receivedRequestsObj.SortByStatus();
             ScenarioContext.Current["ActualStatus"] = actualStatus;
 
         }
@@ -190,7 +188,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             List<String> actualStatus = (List<String>)ScenarioContext.Current["ActualStatus"];
-            List<String> afterStatus = manageRequestsObj.AfterSortingStatus();
+            List<String> afterStatus = receivedRequestsObj.AfterSortingStatus();
             Assert.AreNotEqual(actualStatus, afterStatus);
             test.Log(Status.Pass, "Passed, action successfull.");
 
@@ -199,8 +197,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         [Given(@"I sort the requests by type")]
         public void GivenISortTheRequestsByType()
         {
-            List<String> actualType = manageRequestsObj.BeforeSortingType();
-            manageRequestsObj.SortByType();
+            List<String> actualType = receivedRequestsObj.BeforeSortingType();
+            receivedRequestsObj.SortByType();
             ScenarioContext.Current["ActualType"] = actualType;
             
         }
@@ -210,7 +208,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             List<String> actualType = (List<String>)ScenarioContext.Current["ActualType"];
-            List<String> afterType = manageRequestsObj.AfterSortingType();
+            List<String> afterType = receivedRequestsObj.AfterSortingType();
             Assert.AreNotEqual(actualType, afterType);
             test.Log(Status.Pass, "Passed, action successfull.");
         }
@@ -219,8 +217,8 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         public void GivenISortTheRequestsByDate()
         {
             
-            List<String> actualDate = manageRequestsObj.BeforeSortingDate();
-            manageRequestsObj.SortByDate();
+            List<String> actualDate = receivedRequestsObj.BeforeSortingDate();
+            receivedRequestsObj.SortByDate();
             ScenarioContext.Current["ActualDate"] = actualDate;
 
         }
@@ -229,7 +227,7 @@ namespace MarsFrameworkSpecflow.StepDefinitions
         public void ThenTheRequestsShouldBeSortedByDateSuccessfully()
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-            List<String> afterDate = manageRequestsObj.AfterSortingDate();
+            List<String> afterDate = receivedRequestsObj.AfterSortingDate();
             List<String> actualDate = (List<String>)ScenarioContext.Current["ActualDate"];
             Assert.AreNotEqual(actualDate, afterDate);
             test.Log(Status.Pass, "Passed, action successfull.");

@@ -9,13 +9,13 @@ namespace MarsFrameworkSpecflow.Pages
     {
         public LoginPage()
         {
-            ExcelLib.PopulateInCollection(Base.ExcelPath, "LogIn");
+            ExcelLib.PopulateInCollection(ExcelPath, "LogIn");
         }
-            IWebElement signinButton => driver.FindElement(By.CssSelector("[class=\"item\"]"));
-            IWebElement emailTextbox => driver.FindElement(By.Name("email"));
-            IWebElement passwordTextbox => driver.FindElement(By.Name("password"));
-            IWebElement rememberMeCheckbox => driver.FindElement(By.Name("rememberDetails"));
-            IWebElement loginButton => driver.FindElement(By.XPath("//*[contains(text(),'Login')]"));
+        IWebElement signinButton => driver.FindElement(By.CssSelector("[class=\"item\"]"));
+        IWebElement emailTextbox => driver.FindElement(By.Name("email"));
+        IWebElement passwordTextbox => driver.FindElement(By.Name("password"));
+        IWebElement rememberMeCheckbox => driver.FindElement(By.Name("rememberDetails"));
+        IWebElement loginButton => driver.FindElement(By.XPath("//*[contains(text(),'Login')]"));
 
         public void LogInActions()
         {

@@ -30,9 +30,9 @@ Scenario: 06) Sort Sent Requests by Message
 	Given I sort the sent requests by message
 	Then The sent requests should be sorted by message successfully
 
-Scenario: 07) Sort Sent Requests by Sender
-	Given I sort the sent requests by sender
-	Then The sent requests should be sorted by sender successfully
+Scenario: 07) Sort Sent Requests by Recepient
+	Given I sort the sent requests by recepient
+	Then The sent requests should be sorted by recepient successfully
 
 Scenario: 08) Sort Sent Requests by Status
 	Given I sort the sent requests by status

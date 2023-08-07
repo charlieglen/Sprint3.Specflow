@@ -4,36 +4,29 @@ using MarsFrameworkSpecflow.Global;
 
 namespace MarsFrameworkSpecflow.Pages
 {
-    public class ManageRequestsPage : Base
+    public class ReceivedRequestPage : Base
     {
         IWebElement manageRequestsDropdown => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]"));
         IWebElement receivedRequestPage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[1]"));
-        IWebElement sentRequestPage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[2]"));
         IWebElement showRequestDetails => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[last()]/td[1]"));
         IWebElement starRating => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[last()]/td[3]/div/i[5]"));
         IWebElement acceptRequest => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[1]"));
         IWebElement declineRequest => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[2]"));
-        IWebElement withdrawRequest => driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button"));
         IWebElement getStatus => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]"));
         IWebElement serviceTitle => driver.FindElement(By.XPath("//*[@class=\"skill-title\"]"));
         IWebElement requestTitle => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
-        IWebElement sentRequestTitle => driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
         IWebElement serviceDetail => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a"));
-        IWebElement sentServiceDetail => driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a"));
         IWebElement senderProfile => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]"));
         IWebElement sortByCategory => driver.FindElement(By.XPath("//*[@class=\"two wide\" and contains(text(), \"Category\")]"));
         IWebElement sortByTitle => driver.FindElement(By.XPath("//*[@class=\"three wide\" and contains(text(), \"Title\")]"));
         IWebElement sortByMessage => driver.FindElement(By.XPath("//*[@class=\"four wide\" and contains(text(), \"Message\")]"));
         IWebElement sortBySender => driver.FindElement(By.XPath("//*[@class=\"one wide\" and contains(text(), \"Sender\")]"));
-        IWebElement sortByRecepient => driver.FindElement(By.XPath("//*[@class=\"two wide\" and contains(text(), \"Recipient\")]"));
         IWebElement sortByStatus => driver.FindElement(By.XPath("//*[@class=\"two wide\" and contains(text(), \"Status\")]"));
         IWebElement sortByType => driver.FindElement(By.XPath("//*[@class=\"one wide\" and contains(text(), \"Type\")]"));
         IWebElement sortByDate => driver.FindElement(By.XPath("//*/div[2]/div[1]/table/thead/tr/th[7]"));
         IWebElement viewRequestedTitle => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a"));
         IWebElement senderDetails => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]"));
         IWebElement senderURL => driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
-        IWebElement recipientProfile => driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
-        IWebElement recipientURL => driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
 
         List<IWebElement> categoryList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[1]")));
         List<IWebElement> titleList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[2]")));
@@ -42,7 +35,6 @@ namespace MarsFrameworkSpecflow.Pages
         List<IWebElement> statusList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[5]")));
         List<IWebElement> typeList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[6]")));
         List<IWebElement> dateList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[7]")));
-        List<IWebElement> recepientList => new List<IWebElement>(driver.FindElements(By.XPath("//*/div[2]/div[1]/table/tbody/tr/td[4]")));
 
 
         public void ReceivedRequestsPage()
@@ -51,18 +43,6 @@ namespace MarsFrameworkSpecflow.Pages
             manageRequestsDropdown.Click();
             Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[1]", 5);
             receivedRequestPage.Click();
-        }
-
-        public void SentRequestsPage()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]", 5);
-            manageRequestsDropdown.Click();
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[2]", 5);
-            sentRequestPage.Click();
-        }
-        public void WithdrawRequest()
-        {
-            withdrawRequest.Click();
         }
 
         public void RequestDetailAndRating()
@@ -86,7 +66,6 @@ namespace MarsFrameworkSpecflow.Pages
 
         public string GetStatus()
         {
-            //Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]", 5);
             Task.Delay(3000).Wait();
             return getStatus.Text;
         }
@@ -95,18 +74,6 @@ namespace MarsFrameworkSpecflow.Pages
         {
             Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]", 5);
             return requestTitle.Text;
-        }
-
-        public void ViewSentServiceDetail()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a", 5);
-            sentServiceDetail.Click();
-        }
-
-        public string SentRequestTitle()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]", 5);
-            return sentRequestTitle.Text;
         }
 
         public void ViewServiceDetail()
@@ -121,18 +88,6 @@ namespace MarsFrameworkSpecflow.Pages
             return serviceTitle.Text;
         }
 
-        public void ViewRecipientsProfile()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a", 5);
-            recipientProfile.Click();
-        }
-        public string GetRecipientURL()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a", 5);
-            string urlRecipient = (recipientURL.GetAttribute("href")).Substring(21);
-            return urlRecipient;
-        }
-
         public void ViewSenderProfile()
         {
             Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]", 5);
@@ -142,10 +97,10 @@ namespace MarsFrameworkSpecflow.Pages
         public string GetSenderURL()
         {
             Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a", 5);
-            string urlSender = (senderURL.GetAttribute("href")).Substring(21);
+            string urlSender = senderURL.GetAttribute("href").Substring(21);
             return urlSender;
-
         }
+
         public string GetPageURL()
         {
             string currentURL = driver.Url;
@@ -160,10 +115,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByCategory.Click();
         }
 
-        public List<String> BeforeSortingCategory()
+        public List<string> BeforeSortingCategory()
         {
             Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[1]", 5);
-            List<String> actualCategoryList = new List<string>();
+            List<string> actualCategoryList = new List<string>();
 
             foreach (IWebElement categoryItem in categoryList)
             {
@@ -173,9 +128,9 @@ namespace MarsFrameworkSpecflow.Pages
             return actualCategoryList;
         }
 
-        public List<String> AfterSortingCategory()
+        public List<string> AfterSortingCategory()
         {
-            List<String> sortedCategoryList = new List<string>();
+            List<string> sortedCategoryList = new List<string>();
 
             foreach (IWebElement categoryItem in categoryList)
             {
@@ -194,10 +149,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByTitle.Click();
         }
 
-        public List<String> BeforeSortingTitle()
+        public List<string> BeforeSortingTitle()
         {
             Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[2]", 5);
-            List<String> actualTitleList = new List<string>();
+            List<string> actualTitleList = new List<string>();
 
             foreach (IWebElement titleItem in titleList)
             {
@@ -207,9 +162,9 @@ namespace MarsFrameworkSpecflow.Pages
             return actualTitleList;
         }
 
-        public List<String> AfterSortingTitle()
+        public List<string> AfterSortingTitle()
         {
-            List<String> sortedTitleList = new List<string>();
+            List<string> sortedTitleList = new List<string>();
 
             foreach (IWebElement titleItem in titleList)
             {
@@ -227,10 +182,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByMessage.Click();
         }
 
-        public List<String> BeforeSortingMessage()
+        public List<string> BeforeSortingMessage()
         {
             Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[3]", 5);
-            List<String> actualMessageList = new List<string>();
+            List<string> actualMessageList = new List<string>();
 
             foreach (IWebElement messageItem in messageList)
             {
@@ -239,9 +194,9 @@ namespace MarsFrameworkSpecflow.Pages
             Console.WriteLine(string.Join(" | ", actualMessageList));
             return actualMessageList;
         }
-        public List<String> AfterSortingMessage()
+        public List<string> AfterSortingMessage()
         {
-            List<String> sortedMessageList = new List<string>();
+            List<string> sortedMessageList = new List<string>();
 
             foreach (IWebElement messageItem in messageList)
             {
@@ -259,10 +214,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortBySender.Click();
         }
 
-        public List<String> BeforeSortingSender()
+        public List<string> BeforeSortingSender()
         {
             Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
-            List<String> actualSenderList = new List<string>();
+            List<string> actualSenderList = new List<string>();
 
             foreach (IWebElement senderItem in senderList)
             {
@@ -272,9 +227,9 @@ namespace MarsFrameworkSpecflow.Pages
             return actualSenderList;
         }
 
-        public List<String> AfterSortingSender()
+        public List<string> AfterSortingSender()
         {
-            List<String> sortedSenderList = new List<string>();
+            List<string> sortedSenderList = new List<string>();
 
             foreach (IWebElement senderItem in senderList)
             {
@@ -285,39 +240,6 @@ namespace MarsFrameworkSpecflow.Pages
             return sortedSenderList;
         }
 
-        // Sort by Recepient
-        public void SortByRecepient()
-        {
-            Wait.WaitToBeClickable("XPath", "//*[@class=\"two wide\" and contains(text(), \"Recipient\")]", 5);
-            sortByRecepient.Click();
-        }
-
-        public List<String> BeforeSortingRecepient()
-        {
-            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
-            List<String> actualRecepientList = new List<string>();
-
-            foreach (IWebElement senderItem in recepientList)
-            {
-                actualRecepientList.Add(senderItem.Text);
-            }
-            Console.WriteLine(string.Join(" | ", actualRecepientList));
-            return actualRecepientList;
-        }
-
-        public List<String> AfterSortingRecepient()
-        {
-            List<String> sortedRecepientList = new List<string>();
-
-            foreach (IWebElement senderItem in recepientList)
-            {
-                sortedRecepientList.Add(senderItem.Text);
-                sortedRecepientList.Sort();
-            }
-            Console.WriteLine(string.Join(" | ", sortedRecepientList));
-            return sortedRecepientList;
-        }
-
         // Sort by Status
         public void SortByStatus()
         {
@@ -325,10 +247,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByStatus.Click();
         }
 
-        public List<String> BeforeSortingStatus()
+        public List<string> BeforeSortingStatus()
         {
             Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[5]", 5);
-            List<String> actualStatusList = new List<string>();
+            List<string> actualStatusList = new List<string>();
 
             foreach (IWebElement statusItem in statusList)
             {
@@ -338,10 +260,10 @@ namespace MarsFrameworkSpecflow.Pages
             return actualStatusList;
         }
 
-        public List<String> AfterSortingStatus()
+        public List<string> AfterSortingStatus()
         {
-            List<String> sortedStatusList = new List<string>();
-           
+            List<string> sortedStatusList = new List<string>();
+
 
             foreach (IWebElement statusItem in statusList)
             {
@@ -359,10 +281,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByType.Click();
         }
 
-        public List<String> BeforeSortingType()
+        public List<string> BeforeSortingType()
         {
             Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[6]", 5);
-            List<String> actualTypeList = new List<string>();
+            List<string> actualTypeList = new List<string>();
 
             foreach (IWebElement typeItem in typeList)
             {
@@ -372,9 +294,9 @@ namespace MarsFrameworkSpecflow.Pages
             return actualTypeList;
         }
 
-        public List<String> AfterSortingType()
+        public List<string> AfterSortingType()
         {
-            List<String> sortedTypeList = new List<string>();
+            List<string> sortedTypeList = new List<string>();
 
             foreach (IWebElement typeItem in typeList)
             {
@@ -392,10 +314,10 @@ namespace MarsFrameworkSpecflow.Pages
             sortByDate.Click();
         }
 
-        public List<String> BeforeSortingDate()
+        public List<string> BeforeSortingDate()
         {
             Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[7]", 5);
-            List<String> actualDateList = new List<string>();
+            List<string> actualDateList = new List<string>();
 
             foreach (IWebElement dateItem in dateList)
             {
@@ -405,9 +327,9 @@ namespace MarsFrameworkSpecflow.Pages
             return actualDateList;
         }
 
-        public List<String> AfterSortingDate()
+        public List<string> AfterSortingDate()
         {
-            List<String> sortedDateList = new List<string>();
+            List<string> sortedDateList = new List<string>();
 
             foreach (IWebElement dateItem in dateList)
             {
@@ -417,7 +339,6 @@ namespace MarsFrameworkSpecflow.Pages
             Console.WriteLine(string.Join(" | ", sortedDateList));
             return sortedDateList;
         }
-
 
         public void ViewRequestedTitle()
         {
