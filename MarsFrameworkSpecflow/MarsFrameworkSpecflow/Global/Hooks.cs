@@ -2,11 +2,6 @@
 using AventStack.ExtentReports.Reporter;
 using MarsFrameworkSpecflow.Pages;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static MarsFrameworkSpecflow.Global.GlobalDefinitions;
 
 namespace MarsFrameworkSpecflow.Global
@@ -25,7 +20,7 @@ namespace MarsFrameworkSpecflow.Global
             extent.AttachReporter(htmlReporter);
 
             //Open browser
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(); 
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
