@@ -1,6 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using MarsFrameworkSpecflow.Pages;
+using MarsFrameworkSpecflow.Pages.LoginPage;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;

@@ -1,9 +1,9 @@
-using MarsFrameworkSpecflow.Pages;
 using NUnit.Framework;
 //using static MarsFrameworkSpecflow.Global.Base;
 using System.Reflection;
 using MarsFrameworkSpecflow.Global;
 using AventStack.ExtentReports;
+using MarsFrameworkSpecflow.Pages.ProfilePage;
 
 namespace MarsFrameworkSpecflow.StepDefinitions
 {
